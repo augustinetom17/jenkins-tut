@@ -20,8 +20,8 @@ pipeline {
 		stage ('Copying Artifact') {
 			steps { 
 				sh '''
-				mkdir /home/artifact
-				mv /var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar /home/artifact
+				mkdir /var/lib/jenkins/workspace/ant-build-pipeline/artifact
+				mv /var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar /var/lib/jenkins/workspace/ant-build-pipeline/artifact/
 				'''
 			}
 		}
