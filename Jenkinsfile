@@ -17,5 +17,13 @@ pipeline {
 				ant -f build.xml'''
 			}
 		}
+		stage ('Copying Artifact') {
+			steps { 
+				sh '''
+				mkdir /home/artifact
+				mv /var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar /home/artifact
+				'''
+			}
+		}
 	}
 }
