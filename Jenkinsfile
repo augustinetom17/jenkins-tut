@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 	stages {
+		stage('Clean Workspace') {
+			steps {
+				cleanWs()
+			}
+		}
 		stage('gitStage') {
 			steps{
 				git 'https://github.com/augustinetom17/jenkins-tut.git'
