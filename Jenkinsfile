@@ -26,9 +26,12 @@ pipeline {
 			}
 		}
 		stage ('Copy Artifact using plugin') {
-			steps {
-				copyArtifacts filter: '/var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar', fingerprintArtifacts: true, projectName: 'ant-build-pipeline', target: '/var/lib/jenkins/workspace/ant-build-pipeline/artifact-new/'
-			}
+			script {
+                 step ([$class: 'CopyArtifact',
+                 projectName: 'ant-build-pipeline',
+                 filter: "/var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar",
+                 target: '/var/lib/jenkins/workspace/ant-build-pipeline/artifact-new/']);
+			}	 
 		}	
 			
 	}
