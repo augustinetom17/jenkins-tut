@@ -27,7 +27,7 @@ pipeline {
 		}
 		stage ('Copy Artifact using plugin') {
 			script {
-                 step ([$class: 'CopyArtifact',
+                 steps ([$class: 'CopyArtifact',
                  projectName: 'ant-build-pipeline',
                  filter: "/var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar",
                  target: '/var/lib/jenkins/workspace/ant-build-pipeline/artifact-new/']);
