@@ -21,9 +21,15 @@ pipeline {
 			steps { 
 				sh '''
 				mkdir /var/lib/jenkins/workspace/ant-build-pipeline/artifact
-				mv /var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar /var/lib/jenkins/workspace/ant-build-pipeline/artifact/
+				cp /var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar /var/lib/jenkins/workspace/ant-build-pipeline/artifact/
 				'''
 			}
 		}
+		stage ('Copy Artifact using plugin') {
+			steps {
+				copyArtifacts filter: '/var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar', fingerprintArtifacts: true, projectName: 'ant-build-pipeline', target: '/var/lib/jenkins/workspace/ant-build-pipeline/artifact-new/'
+			}
+		}	
+			
 	}
 }
