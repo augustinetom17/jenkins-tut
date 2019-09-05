@@ -25,16 +25,5 @@ pipeline {
 				'''
 			}
 		}
-		stage('Copy Archive') {
-			steps {
-				script {
-					step ([$class: 'CopyArtifact',
-					projectName: 'ant-build-pipeline',
-					filter: "/var/lib/jenkins/workspace/ant-build-pipeline/dist/*.jar",
-					target: '/var/lib/jenkins/workspace/ant-build-pipeline/artifact-new/']);
-				}
-			}
-		}	
-			
 	}
 }
